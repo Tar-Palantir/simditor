@@ -67,5 +67,5 @@ class UnorderListButton extends ListButton
       @shortcut = 'ctrl+.'
     super()
 
-Simditor.Toolbar.addButton OrderListButton
-Simditor.Toolbar.addButton UnorderListButton
+Simuploaditor.Toolbar.addButton OrderListButton
+Simuploaditor.Toolbar.addButton UnorderListButton

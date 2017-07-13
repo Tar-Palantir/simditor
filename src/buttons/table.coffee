@@ -469,4 +469,4 @@ class TableButton extends Button
     @editor.trigger 'valuechanged'
 
 
-Simditor.Toolbar.addButton TableButton
+Simuploaditor.Toolbar.addButton TableButton

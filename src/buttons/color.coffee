@@ -74,4 +74,4 @@ class ColorButton extends Button
     rgbToHex match[1] * 1, match[2] * 1, match[3] * 1
 
 
-Simditor.Toolbar.addButton ColorButton
+Simuploaditor.Toolbar.addButton ColorButton

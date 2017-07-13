@@ -42,30 +42,49 @@ module.exports = (grunt) ->
             'src/buttons/strikethrough.coffee'
             'src/buttons/alignment.coffee'
           ]
+      simuploader:
+        options:
+          bare: true
+        files:
+          'lib/simuploader.js':'src/simple-uploader.coffee'
 
     sass:
       simuploaditor:
         options:
           style: 'expanded'
-          bundleExec: true
           sourcemap: 'none'
         files:
           'styles/simuploaditor.css': 'styles/simuploaditor.scss'
 
     umd:
-      all:
+      editor:
         src: 'lib/simuploaditor.js'
         template: 'umd.hbs'
         amdModuleId: 'simuploaditor'
         objectToExport: 'Simuploaditor'
         globalAlias: 'Simuploaditor'
         deps:
-          'default': ['$', 'SimpleModule', 'simpleHotkeys', 'simpleUploader']
-          amd: ['jquery', 'simple-module', 'simple-hotkeys', 'simple-uploader']
-          cjs: ['jquery', 'simple-module', 'simple-hotkeys', 'simple-uploader']
+          'default': ['$', 'SimpleModule', 'simpleHotkeys', 'simuploader']
+          amd: ['jquery', 'simple-module', 'simple-hotkeys', 'Simuploader']
+          cjs: ['jquery', 'simple-module', 'simple-hotkeys', 'Simuploader']
           global:
-            items: ['jQuery', 'SimpleModule', 'simple.hotkeys', 'simple.uploader']
+            items: ['jQuery', 'SimpleModule', 'simple"]["hotkeys', 'Simuploader']
             prefix: ''
+      uploader:
+        src: 'lib/simuploader.js'
+        template: 'umd.hbs'
+        amdModuleId: 'simuploader'
+        objectToExport: 'simuploader'
+        globalAlias: 'Simuploader'
+        deps:
+          'default': ['$', 'SimpleModule']
+          amd: ['jquery', 'simple-module']
+          cjs: ['jquery', 'simple-module']
+          global:
+            items: ['jQuery', 'SimpleModule']
+            prefix: ''
+
+
     copy:
       package:
         files: [{
@@ -80,16 +99,11 @@ module.exports = (grunt) ->
           src: 'vendor/bower/simple-module/lib/module.js',
           dest: 'package/scripts/module.js'
         }, {
-          src: 'vendor/bower/simple-uploader/lib/uploader.js',
-          dest: 'package/scripts/uploader.js'
-        }, {
           src: 'vendor/bower/simple-hotkeys/lib/hotkeys.js',
           dest: 'package/scripts/hotkeys.js'
         }, {
-          expand: true,
-          flatten: true
-          src: 'styles/*',
-          dest: 'package/styles/'
+          src: 'styles/simuploaditor.css',
+          dest: 'package/styles/simuploaditor.css'
         }, {
           src: 'styles/image.png',
           dest: 'package/images/image.png'
@@ -101,7 +115,7 @@ module.exports = (grunt) ->
           preserveComments: 'some'
         files:
           'package/scripts/module.min.js': 'package/scripts/module.js'
-          'package/scripts/uploader.min.js': 'package/scripts/uploader.js'
+          'package/scripts/simuploader.min.js': 'package/scripts/simuploader.js'
           'package/scripts/hotkeys.min.js': 'package/scripts/hotkeys.js'
           'package/scripts/simuploaditor.min.js': 'package/scripts/simuploaditor.js'
 
@@ -110,11 +124,18 @@ module.exports = (grunt) ->
         options:
           banner: '''/*!
  * Simuploaditor v<%= pkg.version %>
- * http://simuploaditor.tower.im/
  * <%= grunt.template.today("yyyy-mm-dd") %>
  */'''
         files:
           src: ['lib/simuploaditor.js', 'styles/simuploaditor.css']
+      simuploader:
+        options:
+          banner: '''/*!
+ * Simuploaditor v<%= pkg.version %>
+ * <%= grunt.template.today("yyyy-mm-dd") %>
+ */'''
+        files:
+          src: 'lib/simuploader.js'
 
     compress:
       package:

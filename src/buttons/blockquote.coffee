@@ -40,4 +40,4 @@ class BlockquoteButton extends Button
     @editor.selection.restore()
     @editor.trigger 'valuechanged'
 
-Simditor.Toolbar.addButton BlockquoteButton
+Simuploaditor.Toolbar.addButton BlockquoteButton

@@ -23,4 +23,4 @@ class StrikethroughButton extends Button
     $(document).trigger 'selectionchange'
 
 
-Simditor.Toolbar.addButton StrikethroughButton
+Simuploaditor.Toolbar.addButton StrikethroughButton

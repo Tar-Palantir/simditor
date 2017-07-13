@@ -184,4 +184,4 @@ class CodePopover extends Popover
     if @lang? then @selectEl.val(@lang) else @selectEl.val(-1)
 
 
-Simditor.Toolbar.addButton CodeButton
+Simuploaditor.Toolbar.addButton CodeButton

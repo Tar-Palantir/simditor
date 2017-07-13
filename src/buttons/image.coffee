@@ -544,4 +544,4 @@ class ImagePopover extends Popover
       @altEl.val @alt
 
 
-Simditor.Toolbar.addButton ImageButton
+Simuploaditor.Toolbar.addButton ImageButton

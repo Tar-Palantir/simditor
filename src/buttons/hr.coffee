@@ -29,4 +29,4 @@ class HrButton extends Button
     @editor.trigger 'valuechanged'
 
 
-Simditor.Toolbar.addButton HrButton
+Simuploaditor.Toolbar.addButton HrButton

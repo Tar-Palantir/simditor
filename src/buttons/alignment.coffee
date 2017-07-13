@@ -57,4 +57,4 @@ class AlignmentButton extends Button
     @editor.trigger 'valuechanged'
     @editor.inputManager.throttledSelectionChanged()
 
-Simditor.Toolbar.addButton AlignmentButton
+Simuploaditor.Toolbar.addButton AlignmentButton

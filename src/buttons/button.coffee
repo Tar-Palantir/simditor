@@ -192,4 +192,4 @@ class Button extends SimpleModule
     result
 
 
-Simditor.Button = Button
+Simuploaditor.Button = Button

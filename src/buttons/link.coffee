@@ -134,4 +134,4 @@ class LinkPopover extends Popover
 
 
 
-Simditor.Toolbar.addButton LinkButton
+Simuploaditor.Toolbar.addButton LinkButton

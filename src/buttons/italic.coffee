@@ -34,4 +34,4 @@ class ItalicButton extends Button
     $(document).trigger 'selectionchange'
 
 
-Simditor.Toolbar.addButton ItalicButton
+Simuploaditor.Toolbar.addButton ItalicButton

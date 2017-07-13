@@ -59,4 +59,4 @@ class TitleButton extends Button
     @editor.trigger 'valuechanged'
 
 
-Simditor.Toolbar.addButton TitleButton
+Simuploaditor.Toolbar.addButton TitleButton

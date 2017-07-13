@@ -1,5 +1,5 @@
 
-class Simditor extends SimpleModule
+class Simuploaditor extends SimpleModule
   @connect Util
   @connect InputManager
   @connect Selection
@@ -32,7 +32,7 @@ class Simditor extends SimpleModule
     if editor?
       editor.destroy()
 
-    @id = ++ Simditor.count
+    @id = ++ Simuploaditor.count
     @_render()
 
     if simpleHotkeys
@@ -42,9 +42,9 @@ class Simditor extends SimpleModule
       throw new Error 'simditor: simple-hotkeys is required.'
       return
 
-    if @opts.upload and simpleUploader
+    if @opts.upload and simuploader
       uploadOpts = if typeof @opts.upload == 'object' then @opts.upload else {}
-      @uploader = simpleUploader(uploadOpts)
+      @uploader = simuploader(uploadOpts)
 
     form = @textarea.closest 'form'
     if form.length

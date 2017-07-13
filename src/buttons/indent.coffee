@@ -15,4 +15,4 @@ class IndentButton extends Button
     @editor.indentation.indent()
 
 
-Simditor.Toolbar.addButton IndentButton
+Simuploaditor.Toolbar.addButton IndentButton

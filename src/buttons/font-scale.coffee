@@ -78,4 +78,4 @@ class FontScaleButton extends Button
 
     @editor.trigger 'valuechanged'
 
-Simditor.Toolbar.addButton FontScaleButton
+Simuploaditor.Toolbar.addButton FontScaleButton

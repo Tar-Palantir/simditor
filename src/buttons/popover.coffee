@@ -106,4 +106,4 @@ class Popover extends SimpleModule
     result
 
 
-Simditor.Popover = Popover
+Simuploaditor.Popover = Popover

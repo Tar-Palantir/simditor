@@ -1,5 +1,5 @@
 
-Simditor.i18n =
+Simuploaditor.i18n =
   'zh-CN':
     'blockquote': '引用'
     'bold': '加粗文字'

@@ -33,4 +33,4 @@ class UnderlineButton extends Button
     $(document).trigger 'selectionchange'
 
 
-Simditor.Toolbar.addButton UnderlineButton
+Simuploaditor.Toolbar.addButton UnderlineButton

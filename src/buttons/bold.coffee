@@ -33,4 +33,4 @@ class BoldButton extends Button
     $(document).trigger 'selectionchange'
 
 
-Simditor.Toolbar.addButton BoldButton
+Simuploaditor.Toolbar.addButton BoldButton
