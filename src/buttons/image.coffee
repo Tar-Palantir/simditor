@@ -53,15 +53,15 @@ class ImageButton extends Button
       return false
 
     @editor.on 'selectionchanged.image', =>
-      range = @editor.selection.range()
-      return unless range?
+      #range = @editor.selection.range()
+      #return unless range?
 
-      $contents = $(range.cloneContents()).contents()
-      if $contents.length == 1 and $contents.is('img:not([data-non-image])')
-        $img = $(range.startContainer).contents().eq(range.startOffset)
-        @popover.show $img
-      else
-        @popover.hide()
+      #$contents = $(range.cloneContents()).contents()
+      #if $contents.length == 1 and $contents.is('img:not([data-non-image])')
+      #  $img = $(range.startContainer).contents().eq(range.startOffset)
+      #  @popover.show $img
+      #else
+      #  @popover.hide()
 
     @editor.on 'valuechanged.image', =>
       $masks = @editor.wrapper.find('.simditor-image-loading')
@@ -82,8 +82,8 @@ class ImageButton extends Button
 
   render: (args...) ->
     super args...
-    @popover = new ImagePopover
-      button: @
+    #@popover = new ImagePopover
+    #  button: @
 
     if @editor.opts.imageButton == 'upload'
       @_initUploader @el
@@ -146,10 +146,10 @@ class ImageButton extends Button
         src = if img then img.src else @defaultImage
 
         @loadImage $img, src, =>
-          if @popover.active
-            @popover.refresh()
-            @popover.srcEl.val(@_t('uploading'))
-              .prop('disabled', true)
+          #if @popover.active
+          #  @popover.refresh()
+          #  @popover.srcEl.val(@_t('uploading'))
+          #    .prop('disabled', true)
 
     uploadProgress = $.proxy @editor.util.throttle((e, file, loaded, total) ->
       return unless file.inline
@@ -187,10 +187,14 @@ class ImageButton extends Button
         msg = result.msg || @_t('uploadFailed')
         alert msg
         img_path = @defaultImage
+        id = ''
       else
         img_path = result.file_path
+        id = result.image_id
 
       @loadImage $img, img_path, =>
+        $img.attr 'data-id', id
+
         $img.removeData 'file'
         $img.removeClass 'uploading'
         .removeClass 'loading'
@@ -203,9 +207,9 @@ class ImageButton extends Button
         if @editor.body.find('img.uploading').length < 1
           @editor.uploader.trigger 'uploadready', [file, result]
 
-      if @popover.active
-        @popover.srcEl.prop('disabled', false)
-        @popover.srcEl.val result.file_path
+      #if @popover.active
+      #  @popover.srcEl.prop('disabled', false)
+      #  @popover.srcEl.val result.file_path
 
     @editor.uploader.on 'uploaderror', (e, file, xhr) =>
       return unless file.inline
@@ -232,9 +236,9 @@ class ImageButton extends Button
         $mask.remove() if $mask
         $img.removeData 'mask'
 
-      if @popover.active
-        @popover.srcEl.prop('disabled', false)
-        @popover.srcEl.val @defaultImage
+      #if @popover.active
+      #  @popover.srcEl.prop('disabled', false)
+      #  @popover.srcEl.val @defaultImage
 
       @editor.trigger 'valuechanged'
       if @editor.body.find('img.uploading').length < 1
@@ -336,9 +340,9 @@ class ImageButton extends Button
       @editor.util.reflow $img
       $img.click()
 
-      @popover.one 'popovershow', =>
-        @popover.srcEl.focus()
-        @popover.srcEl[0].select()
+      #@popover.one 'popovershow', =>
+      #  @popover.srcEl.focus()
+      #  @popover.srcEl[0].select()
 
 
 class ImagePopover extends Popover

@@ -5,12 +5,12 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     coffee:
-      simditor:
+      simuploaditor:
         options:
           join: true
           bare: true
         files:
-          'lib/simditor.js': [
+          'lib/simuploaditor.js': [
             'src/selection.coffee'
             'src/formatter.coffee'
             'src/inputManager.coffee'
@@ -42,51 +42,23 @@ module.exports = (grunt) ->
             'src/buttons/strikethrough.coffee'
             'src/buttons/alignment.coffee'
           ]
-      site:
-        expand: true
-        flatten: true
-        src: 'site/assets/_coffee/*.coffee'
-        dest: 'site/assets/scripts/'
-        ext: '.js'
-
-      moduleSpec:
-        expand: true
-        flatten: true
-        src: 'spec/src/*.coffee'
-        dest: 'spec/'
-        ext: '.js'
-
-      buttonSpec:
-        expand: true
-        flatten: true
-        src: 'spec/src/buttons/*.coffee'
-        dest: 'spec/buttons/'
-        ext: '.js'
 
     sass:
-      simditor:
+      simuploaditor:
         options:
           style: 'expanded'
           bundleExec: true
           sourcemap: 'none'
         files:
-          'styles/simditor.css': 'styles/simditor.scss'
-      site:
-        options:
-          style: 'expanded'
-          bundleExec: true
-          sourcemap: 'none'
-        files:
-          'site/assets/styles/app.css': 'site/assets/_sass/app.scss'
-          'site/assets/styles/mobile.css': 'site/assets/_sass/mobile.scss'
+          'styles/simuploaditor.css': 'styles/simuploaditor.scss'
 
     umd:
       all:
-        src: 'lib/simditor.js'
+        src: 'lib/simuploaditor.js'
         template: 'umd.hbs'
-        amdModuleId: 'simditor'
-        objectToExport: 'Simditor'
-        globalAlias: 'Simditor'
+        amdModuleId: 'simuploaditor'
+        objectToExport: 'Simuploaditor'
+        globalAlias: 'Simuploaditor'
         deps:
           'default': ['$', 'SimpleModule', 'simpleHotkeys', 'simpleUploader']
           amd: ['jquery', 'simple-module', 'simple-hotkeys', 'simple-uploader']
@@ -94,33 +66,7 @@ module.exports = (grunt) ->
           global:
             items: ['jQuery', 'SimpleModule', 'simple.hotkeys', 'simple.uploader']
             prefix: ''
-
     copy:
-      vendor:
-        files: [{
-          src: 'vendor/bower/jquery/dist/jquery.min.js',
-          dest: 'site/assets/scripts/jquery.min.js'
-        }]
-      styles:
-        files: [{
-          src: 'styles/simditor.css',
-          dest: 'site/assets/styles/simditor.css'
-        }]
-      scripts:
-        files: [{
-          src: 'vendor/bower/simple-module/lib/module.js',
-          dest: 'site/assets/scripts/module.js'
-        }, {
-          src: 'vendor/bower/simple-uploader/lib/uploader.js',
-          dest: 'site/assets/scripts/uploader.js'
-        }, {
-          src: 'vendor/bower/simple-hotkeys/lib/hotkeys.js',
-          dest: 'site/assets/scripts/hotkeys.js'
-        }, {
-          src: 'lib/simditor.js',
-          dest: 'site/assets/scripts/simditor.js'
-        }]
-
       package:
         files: [{
           expand: true,
@@ -145,99 +91,45 @@ module.exports = (grunt) ->
           src: 'styles/*',
           dest: 'package/styles/'
         }, {
-          src: 'site/assets/images/image.png',
+          src: 'styles/image.png',
           dest: 'package/images/image.png'
         }]
 
-    watch:
-      styles:
-        files: ['styles/*.scss']
-        tasks: ['sass:simditor', 'copy:styles', 'jekyll']
-      scripts:
-        files: ['src/*.coffee', 'src/buttons/*.coffee']
-        tasks: ['coffee:simditor', 'umd', 'copy:scripts', 'jekyll']
-      siteStyles:
-        files: ['site/assets/_sass/*.scss']
-        tasks: ['sass:site', 'jekyll']
-      siteScripts:
-        files: ['site/assets/_coffee/*.coffee']
-        tasks: ['coffee:site', 'jekyll']
-      jekyll:
-        files: ['site/**/*.html', 'site/**/*.md', 'site/**/*.yml']
-        tasks: ['jekyll']
-      moduleSpec:
-        files: ['spec/src/*.coffee']
-        tasks: ['coffee:moduleSpec']
-      buttonSpec:
-        files: ['spec/src/buttons/*.coffee']
-        tasks: ['coffee:buttonSpec']
-
-    jekyll:
-      site:
-        options:
-          bundleExec: true
-          config: 'jekyll.yml'
-
-    express:
-      server:
-        options:
-          server: 'server.js'
-          bases: '_site'
-
     uglify:
-      simditor:
+      simuploaditor:
         options:
           preserveComments: 'some'
         files:
           'package/scripts/module.min.js': 'package/scripts/module.js'
           'package/scripts/uploader.min.js': 'package/scripts/uploader.js'
           'package/scripts/hotkeys.min.js': 'package/scripts/hotkeys.js'
-          'package/scripts/simditor.min.js': 'package/scripts/simditor.js'
+          'package/scripts/simuploaditor.min.js': 'package/scripts/simuploaditor.js'
 
     usebanner:
-      simditor:
+      simuploaditor:
         options:
           banner: '''/*!
- * Simditor v<%= pkg.version %>
- * http://simditor.tower.im/
+ * Simuploaditor v<%= pkg.version %>
+ * http://simuploaditor.tower.im/
  * <%= grunt.template.today("yyyy-mm-dd") %>
  */'''
         files:
-          src: ['lib/simditor.js', 'styles/simditor.css']
+          src: ['lib/simuploaditor.js', 'styles/simuploaditor.css']
 
     compress:
       package:
         options:
-          archive: 'package/simditor-<%= pkg.version %>.zip'
+          archive: 'package/simuploaditor-<%= pkg.version %>.zip'
         files: [{
           expand: true,
           cwd: 'package/'
           src: '**',
-          dest: 'simditor-<%= pkg.version %>/'
+          dest: 'simuploaditor-<%= pkg.version %>/'
         }]
 
     clean:
       package:
         src: ['package/']
-
-    jasmine:
-      test:
-        src: ['lib/**/*.js']
-        options:
-          outfile: 'spec/index.html'
-          styles: [
-            'styles/simditor.css'
-          ]
-          specs: [
-            'spec/*.js'
-            'spec/buttons/*.js'
-          ]
-          vendor: [
-            'vendor/bower/jquery/dist/jquery.min.js'
-            'vendor/bower/simple-module/lib/module.js'
-            'vendor/bower/simple-uploader/lib/uploader.js'
-            'vendor/bower/simple-hotkeys/lib/hotkeys.js'
-          ]
 
     curl:
       fonticons:
@@ -247,21 +139,17 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-umd'
-  grunt.loadNpmTasks 'grunt-express'
-  grunt.loadNpmTasks 'grunt-jekyll'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.loadNpmTasks 'grunt-banner'
   grunt.loadNpmTasks 'grunt-curl'
 
-  grunt.registerTask 'default', ['site', 'express', 'watch']
-  grunt.registerTask 'site', ['sass', 'coffee', 'umd', 'copy:vendor', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
-  grunt.registerTask 'test', ['coffee:moduleSpec', 'coffee:buttonSpec', 'jasmine']
-  grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simditor', 'compress']
+  grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'usebanner']
+  grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simuploaditor', 'compress']
+  grunt.registerTask 'build', ['default', 'package']
 
   grunt.registerTask 'fonticons', ['curl']

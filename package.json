@@ -1,22 +1,16 @@
 {
-  "name": "simditor",
-  "version": "2.3.6",
+  "name": "simuploaditor",
+  "version": "2.3.7",
   "description": "A simple online editor",
-  "keywords": "editor simditor",
+  "keywords": ["editor","simuploaditor"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:mycolorway/simditor.git"
+    "url": "git@github.com:Tar-Palantir/simuploaditor.git"
   },
-  "author": "farthinker <farthinker@gmail.com>",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mycolorway/simditor/issues"
-  },
-  "scripts": {
-    "test": "grunt test --verbose"
-  },
-  "main": "lib/simditor.js",
-  "homepage": "http://simditor.tower.im",
+  "main": "lib/simuploaditor.js",
+  "homepage": "",
   "dependencies": {
     "jquery": "~2.1.4",
     "simple-hotkeys": "~1.0.3",
@@ -33,11 +27,8 @@
     "grunt-contrib-compress": "0.x",
     "grunt-contrib-clean": "0.x",
     "grunt-contrib-jasmine": "0.x",
-    "grunt-jekyll": "0.x",
     "grunt-umd": "2.3.x",
-    "grunt-express": "1.4.0",
     "grunt-banner": "0.3.x",
-    "grunt-curl": "2.1.x",
-    "express": "~3.3.4"
+    "grunt-curl": "2.1.x"
   }
 }

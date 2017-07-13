@@ -1,14 +1,14 @@
 {
-  "name": "simditor",
-  "version": "2.3.6",
-  "homepage": "http://simditor.tower.im/",
+  "name": "simuploaditor",
+  "version": "2.3.7",
+  "homepage": "",
   "authors": [
     "farthinker <farthinker@gmail.com>"
   ],
   "description": "A simple online editor",
   "main": [
-    "lib/simditor.js",
-    "styles/simditor.css"
+    "lib/simuploaditor.js",
+    "styles/simuploaditor.css"
   ],
   "keywords": [
     "editor"
@@ -16,16 +16,10 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "spec",
     "node_modules",
     "vendor",
-    "site",
-    "_config.yml",
-    "Gemfile",
-    "Gemfile.lock",
     "Gruntfile.coffee",
     "package.json",
-    "server.js",
     "README.md",
     "umd.hbs"
   ],
