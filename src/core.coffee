@@ -16,6 +16,7 @@ class Simuploaditor extends SimpleModule
     textarea: null
     placeholder: ''
     defaultImage: 'images/image.png'
+    imagePopover: true
     params: {}
     upload: false
     indentWidth: 40
